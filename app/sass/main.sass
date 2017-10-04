@@ -1,6 +1,7 @@
 @import "fonts"
 @import "libs"
 @import "vars"
+@import "../../node_modules/hamburgers/dist/hamburgers"
 
 *::-webkit-input-placeholder
 	color: #666
@@ -27,19 +28,286 @@ body textarea:required:valid
 
 html, body
 	height: 100%
+	font-size: 16px
 
 body
-	font-size: 16px
 	min-width: 320px
 	position: relative
 	line-height: 1.75
 	font-family: $default-font
 	overflow-x: hidden
 	opacity: 1
+	background-color: unset
+	color: #555
+
+
+h1
+	text-align: center
+	font-size: 2rem
+h3
+	text-align: center
 
 .img-responsive
 	display: block
 	max-width: 100%
 	height: auto
 
-@import "media" // Всегда в конце
+a:hover
+	text-decoration: none
+	color: #fff
+
+/* video settings */
+#bg-video, #bg-img
+	opacity: 0.3
+	position: fixed
+	z-index: -100
+	top: 50%
+	left: 50%
+	min-width: 100%
+	min-height: 100%
+	width: auto
+	height: auto
+	transform: translateX(-50%) translateY(-50%)
+
+#bg-img
+	display: none
+	background-image: url("../img/typing.jpg")
+	background-size: cover
+	background-position: center
+
+/* header section */
+
+.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before
+	background-color: #ccc
+	height: 3px
+.hamburger
+	transition: padding-top .3s
+	padding-top: 22px
+	padding-bottom: 0px
+	z-index: 6
+	position: absolute
+	right: 10px
+	display: none
+	&.h-scrolled
+		padding-top: 12px
+
+.top-nav
+	border-bottom: 1px solid #ccc
+	background-color: rgba($accent, 0.8)
+	position: fixed
+	z-index: 10
+	width: 100%
+	top: 0
+	left: 0
+	transition: background-color .5s
+
+.regular-nav
+	background-color: $accent
+
+
+.company-logo
+	margin: 10px 0 0 10px
+	width: 200px
+	float: left
+
+nav
+	float: right
+	ul
+		list-style: none
+		padding: 0
+		margin: 0
+		li
+			display: inline-block
+			a
+				display: block
+				color: #ccc
+				font-size: 1rem
+				transition: 0.3s ease-in
+				padding: 23px 10px
+				border-bottom: 1px solid rgba(0,0,0,0)
+				text-transform: uppercase
+				&:hover
+					border-bottom: 1px solid #ccc
+					background-color: rgba(#ccc, 0.1)
+			&.active
+				a
+					border-bottom: 1px solid #ccc
+
+section
+	padding: 80px 0 30px
+	overflow: hidden
+	&.first, 
+		height: 100vh
+		position: relative
+	&.white
+		background-color: #fff
+		h1
+			color: lighten($accent, 20%)
+	&#challenges
+		h3
+			color: lighten($accent, 20%)
+			text-align: left
+
+@keyframes scroll
+	0%
+		bottom: -28px
+	80%
+		bottom: -28px
+		box-shadow: 0px 0px 0px #fff
+	90%
+		bottom: -25px
+		box-shadow: 0px 0px 15px #fff
+	100%
+		bottom: -28px
+.scroll
+	animation: scroll 4s infinite ease-in-out
+	position: absolute
+	border-radius: 50%
+	width: 50px
+	height: 50px
+	bottom: -25px
+	left: 50%
+	transform: translateX(-50%)
+	background-color: #ccc
+	cursor: pointer
+	&:after, &:before
+		left: 50%
+		transform-origin: 50% center
+		transform: rotate(45deg) translateX(-70%)
+		content: ""
+		position: absolute
+		border-left: 1px solid $accent
+		border-top: 1px solid $accent
+		width: 12px
+		height: 12px
+		bottom: 18px
+	&:before
+		bottom: 23px
+
+
+.svg-holder
+	width: 50%
+	margin: 0 auto
+
+.fImg
+	overflow: visible !important
+	transition: .8s ease
+	opacity: .5
+	max-height: 100%
+
+
+
+#balls circle
+	transform-origin: 70% 70%
+
+.balls-finished-animated
+	-ms-animation: scaleanim 2s ease infinite
+	animation: scaleanim 2s ease infinite
+
+@keyframes scaleanim
+	0% 
+		transform: translate(0,0) scale(1)
+	30% 
+		transform: translate(0,0) scale(1)
+	40% 
+		transform: translate(0,0) scale(1.2)
+	50% 
+		transform: translate(0,0) scale(1)
+	60% 
+		transform: translate(0,0) scale(1)
+	70% 
+		transform: translate(0,0) scale(1.2)
+	80% 
+		transform: translate(0,0) scale(1)
+	100% 
+		transform: translate(0,0) scale(1)
+
+.start-H1-holder
+	position: absolut
+	width: 100%
+	left: 0
+	bottom: 0
+	h1
+		font-size: 4rem
+		opacity: 0.5
+		text-align: center
+
+.b-icon
+	margin-top: 1.5rem
+	svg
+		overflow: visible
+	
+
+/* ------------------ slider -------------------- */
+.slide-image-wrapper
+	position: relative
+	float: left
+	width: 60%
+.slide-image-desc
+	position: absolute
+	background-color: rgba($accent, 0.7)
+	z-index: 10
+	bottom: 0
+	left: 0
+	width: 100%
+	text-align: center
+	color: #fff
+	font-size: 1.5rem
+.slide-text-wrapper
+	float: left
+	width: 40%
+	padding-left: 10px
+	ul
+		padding: 0
+		margin: 0
+		list-style: none
+		li
+			padding-left: 10px
+			padding-right: 20px
+			position: relative
+			line-height: 1.3
+			margin-bottom: .5rem
+			&:before
+				content: ""
+				position: absolute
+				display: block
+				width: 4px
+				height: .9rem
+				left: 0
+				top: .2rem
+				background-color: lighten($accent, 20%)
+.owl-nav
+	position: absolute
+	width: 100%
+	top: 50%
+	transform: translateY(-50%)
+	.owl-prev, .owl-next
+		float: right
+		margin-right: 10px
+		font-size: 0
+		width: 0
+		height: 0
+		border-style: solid
+		border-width: 9px 0 9px 9px
+		border-color: transparent transparent transparent lighten($accent, 50%)
+		transform: scale(1, 5)
+		&.disabled
+			border-color: transparent transparent transparent transparent
+	.owl-prev
+		float: left
+		transform: scale(-1, 5)
+		margin-left: 10px
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import "media"/* Всегда в конце */

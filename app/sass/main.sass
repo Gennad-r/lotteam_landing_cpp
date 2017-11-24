@@ -38,7 +38,7 @@ body
 	overflow-x: hidden
 	opacity: 1
 	background-color: unset
-	color: #555
+	color: $font-color
 
 
 h1
@@ -51,10 +51,13 @@ h3
 	display: block
 	max-width: 100%
 	height: auto
+a
+	color: $font-color
+	text-decoration: underline
+	transition: color 0.5s
+	&:hover
+		color: lighten($font-color, 20%)
 
-a:hover
-	text-decoration: none
-	color: #fff
 
 /* video settings */
 #bg-video, #bg-img
@@ -78,7 +81,7 @@ a:hover
 /* header section */
 
 .hamburger-inner, .hamburger-inner::after, .hamburger-inner::before
-	background-color: #ccc
+	background-color: $font-color
 	height: 3px
 .hamburger
 	transition: padding-top .3s
@@ -92,7 +95,7 @@ a:hover
 		padding-top: 12px
 
 .top-nav
-	border-bottom: 1px solid #ccc
+	border-bottom: 1px solid $font-color
 	background-color: rgba($accent, 0.8)
 	position: fixed
 	z-index: 10
@@ -119,30 +122,42 @@ nav
 		li
 			display: inline-block
 			a
+				text-decoration: none
 				display: block
-				color: #ccc
+				color: $font-color
 				font-size: 1rem
 				transition: 0.3s ease-in
 				padding: 23px 10px
 				border-bottom: 1px solid rgba(0,0,0,0)
 				text-transform: uppercase
 				&:hover
-					border-bottom: 1px solid #ccc
-					background-color: rgba(#ccc, 0.1)
-			&.active
-				a
-					border-bottom: 1px solid #ccc
+					border-bottom: 1px solid $font-color
+					background-color: rgba($font-color, 0.1)
+					text-decoration: none
+					color: $font-color
+				&:focus
+					color: $font-color
+					text-decoration: none
+					outline: none
+					outline-offset: 0	
+				&.active
+					border-bottom: 1px solid $font-color
 
-section
+.first, 
+	height: 100vh
+	position: relative
+	overflow: hidden
 	padding: 80px 0 30px
 	overflow: hidden
-	&.first, 
-		height: 100vh
-		position: relative
+section
+	padding: 80px 0 30px
 	&.white
-		background-color: #fff
+		background-color: rgba(255,255,255,.85)
 		h1
 			color: lighten($accent, 20%)
+		p, li, a
+			color: darken($font-color, 20%)
+
 	&#challenges
 		h3
 			color: lighten($accent, 20%)
@@ -168,7 +183,7 @@ section
 	bottom: -25px
 	left: 50%
 	transform: translateX(-50%)
-	background-color: #ccc
+	background-color: $font-color
 	cursor: pointer
 	&:after, &:before
 		left: 50%
@@ -193,7 +208,7 @@ section
 	overflow: visible !important
 	transition: .8s ease
 	opacity: .5
-	max-height: 100%
+	max-height: 75vh
 
 
 
@@ -223,19 +238,22 @@ section
 		transform: translate(0,0) scale(1)
 
 .start-H1-holder
-	position: absolut
 	width: 100%
-	left: 0
-	bottom: 0
+	left: 20px
 	h1
 		font-size: 4rem
 		opacity: 0.5
 		text-align: center
+		margin-top: 3px
 
 .b-icon
 	margin-top: 1.5rem
 	svg
 		overflow: visible
+
+.about-icon-holder
+	max-width: 60%
+	margin: 1rem auto 0
 	
 
 /* ------------------ slider -------------------- */
@@ -298,15 +316,71 @@ section
 		transform: scale(-1, 5)
 		margin-left: 10px
 
+.thumbnail:hover
+	.img-icon-holder
+		opacity: 1
+	
 
+.img-icon-holder
+	max-width: 50%
+	margin: 0 auto
+	opacity: .4
+	transition: 0.5s
 
+.dark
+	background-color: rgba($accent, 0.9)
+	hr
+		border-top: 1px solid $font-color
+		margin: 10px 0
 
+.address-holder
+	p
+		margin: 0px
+	.row
+		margin-bottom: 20px
+		img
+			opacity: .5
+			transition: .5s
+		&:hover
+			img
+				opacity: 1
+	a
+		text-decoration: none
+.form-holder
+	border-left: 1px solid $font-color
 
+.field
+	margin-bottom: 12px
+	label, input,textarea
+		display: block
+		width: 100%
 
+footer
+	background-color: $accent
+	border-top: 1px solid $font-color
+	padding: 20px 0
+.right
+	text-align: right
+.btn
+	padding: 0 20px
+	color: $accent
 
-
-
-
+.thanks
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	background-color: rgba(#000, 0.8)
+	color: #fff
+	font-size: 3rem
+	z-index: 10
+	text-align: center
+	font-weight: bold
+	display: none
+	span
+		display: table-cell
+		vertical-align: middle
 
 
 
